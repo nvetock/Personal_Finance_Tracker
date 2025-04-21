@@ -5,7 +5,7 @@
 
 namespace TrackerMode {
 	enum Mode {
-		UNKNOWN,
+		UNSET,
 		VIEW,
 		MODIFY,
 	};

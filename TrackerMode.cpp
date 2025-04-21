@@ -2,10 +2,10 @@
 
 const std::string TrackerMode::convertModeToString(TrackerMode::Mode mode) {
 	switch (mode) {
-	case TrackerMode::UNKNOWN:   return "UNKNOWN";
+	case TrackerMode::UNSET:     return "UNSET";
 	case TrackerMode::VIEW:      return "VIEW";
 	case TrackerMode::MODIFY:    return "MODIFY";
-	default:                     return "UNKNOWN";
+	default:                     return "UNSET";
 	}
 }
 
@@ -16,5 +16,5 @@ const TrackerMode::Mode TrackerMode::convertStringToMode(std::string str) {
 	
 	if (str == "VIEW")           return TrackerMode::Mode::VIEW;
 	else if (str == "MODIFY")    return TrackerMode::Mode::MODIFY;
-	else                         return TrackerMode::Mode::UNKNOWN;
+	else                         return TrackerMode::Mode::UNSET;
 }
