@@ -8,7 +8,8 @@ class Modify_State :
     public IState
 {
 public:
-    Modify_State() {}
+    Modify_State(FinTracker context)
+        : _context{ context } {}
     ~Modify_State() {}
 
     void setContext(FinTracker context);

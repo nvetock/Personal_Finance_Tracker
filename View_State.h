@@ -7,7 +7,8 @@
 class View_State : public IState
 {
 public:
-	View_State(){}
+	View_State(FinTracker context)
+		: _context{ context } {}
 	~View_State(){}
 
 	void setContext(FinTracker context);

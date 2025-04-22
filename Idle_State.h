@@ -7,7 +7,8 @@ class Idle_State :
     public IState
 {
 public:
-    Idle_State(FinTracker context) {}
+    Idle_State(FinTracker &context)
+        : _context{ context } {}
     ~Idle_State() {}
 
     void setContext(FinTracker context);

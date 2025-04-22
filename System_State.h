@@ -8,7 +8,8 @@ class System_State :
     public IState
 {
 public:
-    System_State() {}
+    System_State(FinTracker context)
+        : _context{ context } {}
     ~System_State() {}
 
     void setContext(FinTracker context);

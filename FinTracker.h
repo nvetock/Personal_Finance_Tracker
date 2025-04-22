@@ -9,16 +9,15 @@
 class FinTracker
 {
 public:
-	FinTracker(){}
-	FinTracker(IState initialState){}
+	FinTracker(IState* initialState);
 	~FinTracker();
 
-	void changeState(IState state);
+	void changeState(IState *state);
 	const void printCommandMenu() const;
 
 
 private:
-	IState _state;
+	IState *_state;
 };
 
 #endif
