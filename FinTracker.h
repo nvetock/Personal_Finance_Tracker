@@ -9,17 +9,17 @@
 class FinTracker
 {
 public:
-	FinTracker(TrackerMode::Mode mode)
-		: _trackerMode{ mode }
+	FinTracker()
 	{ }
-
-
+	
+	~FinTracker();
 
 	const TrackerMode::Mode getMode() const;
 	void setMode(std::string& input);
 
 private:
 	TrackerMode::Mode _trackerMode{ TrackerMode::Mode::UNSET };
+
 };
 
 #endif

@@ -15,6 +15,17 @@ void SysCommands::ignoreLine() {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+std::string SysCommands::toLower(const std::string& str) {
+	// FIXME: Should this check for errors?
+	
+	std::string s{};
+	for (int i = 0; i < str.size(); ++i) {
+		s[i] = std::tolower(str[i]);
+	}
+
+	return s;
+}
+
 bool SysCommands::clearFailedExtraction() {
 	if (!std::cin) {
 		if (std::cin.eof()) {

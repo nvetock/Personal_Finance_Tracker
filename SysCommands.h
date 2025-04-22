@@ -22,12 +22,22 @@ namespace SysCommands
 	void printCommandMenu();
 
 
-	////// INPUT VALIDATION //////
+	////// HELPER FUNCTIONS //////
+	
+	/// <summary>
+	/// Helper function to convert a string to all lowercase letters.
+	/// Changes the argument passed to it and returns bool based on if it was successful.
+	/// </summary>
+	/// <param name="str"></param>
+	std::string toLower(const std::string& str);
 
 	/// <summary>
 	/// Helper function to clear cin buffer
 	/// </summary>
 	void ignoreLine();
+
+
+	////// INPUT VALIDATION //////
 
 	/// <summary>
 	/// This method acts as a catch all for handling failed user input.

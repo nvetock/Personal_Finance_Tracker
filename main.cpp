@@ -2,12 +2,13 @@
 #include <string>
 #include "Logger.h"
 #include "SysCommands.h"
+#include "FinTracker.h"
 
 int main()
 {
 	SysCommands::printMsg("Personal Finance Tracker is running...");
 	Logger myLogger("Logs/main.log");
-
+	FinTracker tracker{};
 	// Database class instantiates here
 	
 	while (true) {
@@ -31,10 +32,9 @@ int main()
 		}
 
 		// Convert user input into Enum
+		tracker.setMode(userInput);
 
-		switch () {
 
-		}
 		// View asks to filter by date or type
 
 		// Add Entry asks if income or expense
