@@ -1,25 +1,24 @@
 #ifndef FINTRACKER_H
 #define FINTRACKER_H
 
-#include "TrackerMode.h"
+#include "IState.h"
 
 /// <summary>
-/// FinTracker is the brain that passes user intention to the correct object that will handle the desired operations.
+/// FinTracker is the brain that a user interacts with. This class controls the state machine and holds relevant DB info.
 /// </summary>
 class FinTracker
 {
 public:
-	FinTracker()
-	{ }
-	
+	FinTracker(){}
+	FinTracker(IState initialState){}
 	~FinTracker();
 
-	const TrackerMode::Mode getMode() const;
-	void setMode(std::string& input);
+	void changeState(IState state);
+	const void printCommandMenu() const;
+
 
 private:
-	TrackerMode::Mode _trackerMode{ TrackerMode::Mode::UNSET };
-
+	IState _state;
 };
 
 #endif
