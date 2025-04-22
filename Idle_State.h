@@ -2,22 +2,21 @@
 #define IDLE_STATE_H
 
 #include "IState.h"
-#include "FinTracker.h"
 
 class Idle_State :
     public IState
 {
 public:
-    Idle_State() {}
+    Idle_State(FinTracker context) {}
     ~Idle_State() {}
 
     void setContext(FinTracker context);
 
     const void printCommandMenu() const;
 
-    std::string getUserInput(std::string& userInput);
+    std::string getUserInput();
 private:
-    FinTracker _context;
+    FinTracker _context{};
 };
 
 #endif

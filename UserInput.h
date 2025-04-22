@@ -1,5 +1,5 @@
-#ifndef SYSCOMMANDS_H
-#define SYSCOMMANDS_H
+#ifndef USERINPUT_H
+#define USERINPUT_H
 
 #include <string>
 
@@ -8,7 +8,7 @@
 /// like recurring menu printing, message printing, etc.
 /// As well as a place for any validation functions like user input.
 /// </summary>
-namespace SysCommands
+namespace UserInput
 {
 	/// <summary>
 	/// Display a message to the console.
@@ -45,6 +45,9 @@ namespace SysCommands
 	/// </summary>
 	/// <returns></returns>
 	bool clearFailedExtraction();
+
+
+	std::string getUserInput();
 };
 
 #endif
