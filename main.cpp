@@ -14,6 +14,7 @@ int main()
 	while (true) {
 		SysCommands::printCommandMenu();
 
+		//
 		// Get menu option from user
 		std::string userInput{};
 		try {
