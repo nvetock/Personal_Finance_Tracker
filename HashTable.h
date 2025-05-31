@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "HashBucket.h"
+#include <optional>
 
 class HashTable
 {
@@ -23,10 +24,35 @@ public:
 	}
 
 	// HASH TABLE OPERATIONS
+	bool insert(uint32_t key, Transaction value) {
+
+		return false;
+	}
+
+	bool remove(uint32_t key) {
+
+		return false;
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="key"></param>
+	/// <returns>Returns table index where matching item is located as a uint16_t positive value. Else -1.</returns>
+	int32_t search(uint32_t key) {
+
+		return;
+	}
+
 
 private:
 	uint16_t table_size{};
 	std::vector<HashBucket> table{};
+
+
+	uint32_t hashKey(uint32_t key) {
+		return key % table_size;
+	}
 
 	/// <summary>
 	/// Resizes the current Hash Table and re-implements the values that were held in the previous table before replacing that old table.
@@ -42,10 +68,6 @@ private:
 			uint32_t k = table[i].getValue().getTransactionId();
 		}
 
-	}
-
-	long hashKey(long key) {
-		return key % table_size;
 	}
 };
 
