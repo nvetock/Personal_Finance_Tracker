@@ -25,6 +25,8 @@ public:
 	HashBucket(const uint32_t &key, const Transaction* value)
 		: key{ key }, value{ value }, availability{BucketAvail::empty}
 	{ }
+
+	~HashBucket() {}
 	
 	int64_t getKey() const;
 	void setKey(const uint32_t key);
