@@ -1,23 +1,34 @@
 #include "HashBucket.h"
 
-long HashBucket::getKey() const {
+int64_t HashBucket::getKey() const {
 	return key;
 }
 
+void HashBucket::setKey(const uint32_t key) {
+	this->key = key;
+}
 
-Transaction HashBucket::getValue() const {
+const BucketAvail HashBucket::getAvailable() const {
+	return availability;
+}
+
+void HashBucket::setAvailable(const BucketAvail avail) {
+	availability = avail;
+}
+
+const Transaction* HashBucket::getValue() const {
 	return value;
 }
 
-void HashBucket::setValue(Transaction value) {
-	HashBucket::value = value;
+void HashBucket::setValue(Transaction* value) {
+	this->value = value;
 }
 
 
-HashBucket* HashBucket::getNext() const {
-	return next;
-}
-
-void HashBucket::setNext(HashBucket* next) {
-	HashBucket::next = next;
-}
+//const HashBucket* HashBucket::getNext() const {
+//	return next;
+//}
+//
+//void HashBucket::setNext(HashBucket* next) {
+//	this->next = next;
+//}
