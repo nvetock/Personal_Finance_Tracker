@@ -23,6 +23,10 @@ const std::string& Transaction::getDescription() const {
 	return description;
 }
 
+const int Transaction::getDescriptionMaxLength() const {
+	return description_max_length;
+}
+
 
 // SETTERS
 void Transaction::setTransactionType(TransactionType t) {
@@ -35,10 +39,32 @@ void Transaction::setTransactionCategory(TransactionCategory c) {
 
 bool Transaction::setAmount(double amount) {
 	// input validation on amount
+	if (std::isdigit(amount)) {
+		this->amount = amount;
+		return true;
+	}
 
 	return false;
 }
 
-void Transaction::setDescription(std::string& msg) {
-	description = msg;
+/// <summary>
+/// Sets the transaction's description. New description must be less than or equal to the max allowed length.
+/// </summary>
+/// <param name="msg">new description to be set</param>
+/// <returns>Returns true or false based on success</returns>
+bool Transaction::setDescription(std::string& msg) {
+	
+	if (msg.size() <= getDescriptionMaxLength()) {
+		description = msg;
+		return true;
+	}
+
+	return false;
+}
+
+/// <summary>
+/// Sets the transaction's description to an empty string.
+/// </summary>
+void Transaction::removeDescription() {
+	description = "";
 }

@@ -12,11 +12,12 @@ class Transaction
 public:
 	Transaction()
 		:
-		transaction_id{current_transaction_id++},
-		transaction_type{TransactionType::none},
-		category{TransactionCategory::none},
-		amount{0.0},
-		description{""}
+		transaction_id{ current_transaction_id++ },
+		transaction_type{ TransactionType::none },
+		category{ TransactionCategory::none },
+		amount{ 0.0 },
+		description{ "" },
+		description_max_length{ 255 }
 	{
 	}
 
@@ -24,13 +25,15 @@ public:
 		TransactionType trans_type,
 		TransactionCategory trans_cat,
 		double amount,
-		std::string& description)
-		:
+		std::string& description,
+		int desc_max_length=255
+	)	:
 		transaction_id{ current_transaction_id++ },
 		transaction_type{trans_type},
 		category{trans_cat},
 		amount{amount},
-		description{description}
+		description{description},
+		description_max_length { desc_max_length }
 	{ }
 
 	~Transaction() {}
@@ -41,13 +44,15 @@ public:
 	const TransactionCategory getTransactionCategory() const;
 	const double getAmount() const;
 	const std::string& getDescription() const;
+	const int getDescriptionMaxLength() const;
 
 
 	// SETTERS
 	void setTransactionType(TransactionType t);
 	void setTransactionCategory(TransactionCategory c);
 	bool setAmount(double amount);
-	void setDescription(std::string& msg);
+	bool setDescription(std::string& msg);
+	void removeDescription();
 
 private:
 	// Number will never be negative so uint
@@ -61,6 +66,6 @@ private:
 	double amount{ 0.0 };
 	//date
 	std::string description{ "" };
-
+	int description_max_length{};
 };
 
