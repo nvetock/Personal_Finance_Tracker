@@ -73,11 +73,12 @@ void Transaction::removeDescription() {
 	description = "";
 }
 
-std::ostream& operator<<(std::ostream& out, Transaction& t) {
-	
-	out << std::to_string(t.getTransactionId());
-	out << std::to_string(t.getAmount());
-	out << t.getDescription();
+std::ostream& operator<<(std::ostream& out, const Transaction& t) {
+	out << "Transaction ID: " << t.transaction_id << "\n"
+		<< "Amount: " << t.amount << "\n"
+		<< "Type: " << static_cast<int>(t.transaction_type) << "\n"
+		<< "Category: " << static_cast<int>(t.category) << "\n"
+		<< "Description: " << t.description;
 
 	return out;
 }

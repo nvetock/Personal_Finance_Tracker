@@ -30,63 +30,79 @@ int main()
 	std::cout << "Welcome to Finance Tracker\n\n";
 	while (true) {
 
-		std::cout << "| (1) Add Transaction |\n| (2) Get Transaction |\n| (3) List All Transactions |\n| (4) Remove Transaction |\n\nEnter Command: ";
+		std::cout << "| (1) Add Transaction |\n| (2) Get Transaction |\n| (3) List All Transactions |\n| (4) Remove Transaction |\n| q to quit\n\nEnter Command: ";
 
 		std::string user_input{""};
 		std::cin >> user_input;
+		int num_input{ 0 };
 
-		int num_input{ stoi(user_input) };
 
-		switch (num_input) {
-		case 1:
-			std::cout << "\n\nAdd Transaction Mode:\nIncome(1) or Expense(2)?\n";
-			std::cin >> user_input;
-			int trans_type{ stoi(user_input) };
-
-			std::cout << "\nCategory type?\nRent(1) | Food(2) | Gas(3) | Entertainment(4)\n";
-			std::cin >> user_input;
-			int trans_cat{ stoi(user_input) };
-
-			std::cout << "\nAmount?\n";
-			std::cin >> user_input;
-			double amt{ stod(user_input) };
-
-			std::cout << "\nTransaction description?\n";
-			std::cin >> user_input;
-
-			tracker.addTransaction(static_cast<TransactionType>(trans_type), static_cast<TransactionCategory>(trans_cat), amt, user_input);
+		if (user_input == "q" || user_input == "Q") {
+			std::cout << "Exiting..." << std::endl;
 			break;
-		case 2:
-			std::cout << "Enter Transactioin ID number:\n";
-			std::cin >> user_input;
-			int trans_id{ stoi(user_input) };
-			const Transaction* t{ tracker.getTransaction(trans_id) };
+		}
+		else {
+			num_input = stoi(user_input);
+		}
 
-			std::cout << t;
-			break;
-		case 3:
-			const std::vector<const Transaction*> allTransactions{ tracker.getTransactionList() };
+		while (true) {
 
-			for (int i = 0; i < allTransactions.size(); ++i) {
-				std::cout << allTransactions[i] << '\n';
+			if (num_input == 1) {
+				std::cout << "\n\nAdd Transaction Mode:\nIncome(1) or Expense(2)?\n";
+				std::cin >> user_input;
+				int trans_type{ stoi(user_input) };
+
+				std::cout << "\nCategory type?\nRent(1) | Food(2) | Gas(3) | Entertainment(4)\n";
+				std::cin >> user_input;
+				int trans_cat{ stoi(user_input) };
+
+				std::cout << "\nAmount?\n";
+				std::cin >> user_input;
+				double amt{ stod(user_input) };
+
+				std::cout << "\nTransaction description?\n";
+				std::cin >> user_input;
+
+				tracker.addTransaction(static_cast<TransactionType>(trans_type), static_cast<TransactionCategory>(trans_cat), amt, user_input);
+				
+				break;
 			}
+			else if (num_input == 2) {
+				std::cout << "Enter Transactioin ID number:\n";
+				std::cin >> user_input;
+				int trans_id{ stoi(user_input) };
+				const Transaction* t{ tracker.getTransaction(trans_id) };
 
-			break;
-		case 4:
+				std::cout << t;
 
-			std::cout << "Enter Transactioin ID number to remove:\n";
-			std::cin >> user_input;
-			int trans_id{ stoi(user_input) };
-
-			if (tracker.removeTransaction(trans_id)) {
-				std::cout << "removed transaction #" << user_input << '\n';
+				break;
 			}
-			std::cout << "failed to remove transaction #" << user_input << '\n';
+			else if (num_input == 3) {
+				const std::vector<const Transaction*> allTransactions{ tracker.getTransactionList() };
 
-			break;
-		default:
-			std::cout << "Invalid input." << std::endl;
-			continue;
+				for (int i = 0; i < allTransactions.size(); ++i) {
+					std::cout << allTransactions[i] << '\n';
+				}
+
+				break;
+			}
+			else if (num_input == 4) {
+
+				std::cout << "Enter Transactioin ID number to remove:\n";
+				std::cin >> user_input;
+				int trans_id{ stoi(user_input) };
+
+				if (tracker.removeTransaction(trans_id)) {
+					std::cout << "removed transaction #" << user_input << '\n';
+				}
+				std::cout << "failed to remove transaction #" << user_input << '\n';
+
+				break;
+			}
+			else {
+				std::cout << "Invalid input." << std::endl;
+				continue;
+			}
 		}
 	}
 

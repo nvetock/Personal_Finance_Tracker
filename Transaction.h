@@ -2,6 +2,7 @@
 
 #include <string>
 #include <atomic>
+#include <ostream>
 
 #include "TransactionEnum.h"
 
@@ -53,6 +54,9 @@ public:
 	bool setAmount(double amount);
 	bool setDescription(std::string& msg);
 	void removeDescription();
+
+	friend std::ostream& operator<<(std::ostream& out, const Transaction& t);
+
 
 private:
 	// Number will never be negative so uint

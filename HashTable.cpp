@@ -8,6 +8,8 @@ const uint16_t HashTable::getTableSize() const {
 }
 
 
+
+
 // SETTERS
 void HashTable::setTableSize(const uint16_t n) {
 	table_size = n;
