@@ -35,17 +35,19 @@ public:
 		return result;
 	}
 
+	/*
 	template<typename... IDs>
 	std::vector<Transaction*> getTransactionList(IDs... ids) {
 		static_assert((std::is_same_v<IDs, uint32_t> && ...),
 			"All arguments must be uint32_t");
 		
-		std::vector result{ Transaction(ids) };
+		//std::vector<Transaction*> result{ Transaction*(ids) };
 
 
 
 		return result;
 	}
+	*/
 
 private:
 	HashTable table{};

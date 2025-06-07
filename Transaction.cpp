@@ -73,6 +73,14 @@ void Transaction::removeDescription() {
 	description = "";
 }
 
+const void Transaction::print() const {
+	std::cout << "Transaction ID: " << this->transaction_id << "\n"
+		<< "Amount: " << this->amount << "\n"
+		<< "Type: " << static_cast<int>(this->transaction_type) << "\n"
+		<< "Category: " << static_cast<int>(this->category) << "\n"
+		<< "Description: " << this->description;
+}
+
 std::ostream& operator<<(std::ostream& out, const Transaction& t) {
 	out << "Transaction ID: " << t.transaction_id << "\n"
 		<< "Amount: " << t.amount << "\n"

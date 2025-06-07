@@ -10,14 +10,10 @@ bool FinanceTracker::addTransaction() {
 
 bool FinanceTracker::addTransaction(TransactionType type, TransactionCategory category, double amount, std::string& description) {
 	
-	if (std::isdigit(amount)) {
-		Transaction t{ Transaction(type, category, amount, description) };
-		this->table.insert(t.getTransactionId(), &t);
+	Transaction t{ Transaction(type, category, amount, description) };
+	this->table.insert(t.getTransactionId(), &t);
 
-		return true;
-	}
-
-	return false;
+	return true;
 }
 
 const Transaction* FinanceTracker::getTransaction(uint32_t id) {

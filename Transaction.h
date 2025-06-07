@@ -2,7 +2,8 @@
 
 #include <string>
 #include <atomic>
-#include <ostream>
+//#include <ostream>
+#include <iostream>
 
 #include "TransactionEnum.h"
 
@@ -55,6 +56,7 @@ public:
 	bool setDescription(std::string& msg);
 	void removeDescription();
 
+	const void print() const;
 	friend std::ostream& operator<<(std::ostream& out, const Transaction& t);
 
 

@@ -39,7 +39,7 @@ int main()
 
 		if (user_input == "q" || user_input == "Q") {
 			std::cout << "Exiting..." << std::endl;
-			break;
+			return 0;
 		}
 		else {
 			num_input = stoi(user_input);
@@ -73,7 +73,9 @@ int main()
 				int trans_id{ stoi(user_input) };
 				const Transaction* t{ tracker.getTransaction(trans_id) };
 
-				std::cout << t;
+				std::cout << *t;
+
+				//t->print();
 
 				break;
 			}
@@ -81,7 +83,8 @@ int main()
 				const std::vector<const Transaction*> allTransactions{ tracker.getTransactionList() };
 
 				for (int i = 0; i < allTransactions.size(); ++i) {
-					std::cout << allTransactions[i] << '\n';
+					allTransactions[i]->print();
+					//std::cout << *allTransactions[i] << '\n';
 				}
 
 				break;
