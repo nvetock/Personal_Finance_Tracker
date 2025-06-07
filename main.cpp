@@ -30,6 +30,7 @@ int main()
 	
 	std::cout << x->getAmount() << '\t' << x->getTransactionId() << '\t' << x->getDescription() << '\t' << '\n';
 	/*
+	* 
 	int x{ 5 };
 
 	const int *xRef = &x;
