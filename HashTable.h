@@ -28,6 +28,14 @@ public:
 	// GETTERS
 	const uint16_t getTableSize() const;
 
+	const bool getBucketAvailability(const uint16_t i) const {
+		
+		if (table[i]->getAvailable() == BucketAvail::occupied) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	// SETTERS
 	void setTableSize(const uint16_t n);

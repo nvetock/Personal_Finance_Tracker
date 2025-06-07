@@ -20,10 +20,9 @@ bool FinanceTracker::addTransaction(TransactionType type, TransactionCategory ca
 	return false;
 }
 
-Transaction FinanceTracker::getTransaction(uint32_t id) {
+const Transaction* FinanceTracker::getTransaction(uint32_t id) {
 
-	// make this function return a pointer if the dereference doesn't work as intended.
-	return *this->table.search(id);
+	return this->table.search(id);
 
 }
 

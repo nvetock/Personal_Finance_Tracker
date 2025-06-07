@@ -62,9 +62,22 @@ bool Transaction::setDescription(std::string& msg) {
 	return false;
 }
 
+
+
+// LOGIC
+
 /// <summary>
 /// Sets the transaction's description to an empty string.
 /// </summary>
 void Transaction::removeDescription() {
 	description = "";
+}
+
+std::ostream& operator<<(std::ostream& out, Transaction& t) {
+	
+	out << std::to_string(t.getTransactionId());
+	out << std::to_string(t.getAmount());
+	out << t.getDescription();
+
+	return out;
 }
