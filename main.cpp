@@ -2,6 +2,8 @@
 #include <string>
 #include <array>
 #include <random>
+#include <bitset>
+
 
 #include "Logger.h"
 #include "HashTable.h"
@@ -10,17 +12,13 @@
 
 
 
-int main()
-{
-	Logger myLogger("Logs/main.log");
-	//FinanceTracker tracker{};
-	
+void runProgram() {
 	FinanceTracker tracker{};
 
 	std::uniform_real_distribution<double> real_num(0.00, 350.00);
 	std::default_random_engine rand;
 
-	std::string m { "empty" };
+	std::string m{ "empty" };
 
 
 	for (int i = 0; i < 20; ++i) {
@@ -32,14 +30,14 @@ int main()
 
 		std::cout << "| (1) Add Transaction |\n| (2) Get Transaction |\n| (3) List All Transactions |\n| (4) Remove Transaction |\n| q to quit\n\nEnter Command: ";
 
-		std::string user_input{""};
+		std::string user_input{ "" };
 		std::cin >> user_input;
 		int num_input{ 0 };
 
 
 		if (user_input == "q" || user_input == "Q") {
 			std::cout << "Exiting..." << std::endl;
-			return 0;
+			return;
 		}
 		else {
 			num_input = stoi(user_input);
@@ -64,7 +62,7 @@ int main()
 				std::cin >> user_input;
 
 				tracker.addTransaction(static_cast<TransactionType>(trans_type), static_cast<TransactionCategory>(trans_cat), amt, user_input);
-				
+
 				break;
 			}
 			else if (num_input == 2) {
@@ -108,59 +106,17 @@ int main()
 			}
 		}
 	}
+}
 
 
 
-	/*
-	HashTable hashtable = HashTable();
-
-	for (int i = 0; i < hashtable.getTableSize(); ++i) {
-		std::cout << hashtable.printKey(i) << '\n';
-	}
-	std::string msg = "weekly gas";
-	Transaction* t1 = new Transaction(TransactionType::income, TransactionCategory::gas, 40.00, msg);
-
-	hashtable.insert(t1->getTransactionId(), t1);
-
-	for (int i = 0; i < hashtable.getTableSize(); ++i) {
-		std::cout << hashtable.printKey(i) << '\n';
-	}
-
-
-	const Transaction* x{ hashtable.search(t1->getTransactionId()) };
+int main()
+{
+	Logger myLogger("Logs/main.log");
+	//FinanceTracker tracker{};
 	
-	std::cout << x->getAmount() << '\t' << x->getTransactionId() << '\t' << x->getDescription() << '\t' << '\n';
-	*/
-
-
-
-
-	/*
-	* 
-	int x{ 5 };
-
-	const int *xRef = &x;
-
-	int& d{ x };
-
-
-	std::cout << x << std::endl;
-	std::cout << xRef << std::endl;
-	std::cout << d << std::endl;
-	
-	d += 1;
-
-	std::cout << x << std::endl;
-	std::cout << *xRef << std::endl;
-	std::cout << d << std::endl;
-
-
-	std::array<int, 5> arr{};
-
-	for (int i = 0; i < arr.size(); ++i) {
-		std::cout << arr[i];
-	}
-	*/
+	// This runs the program
+	runProgram();
 
 	return 0;
 }
